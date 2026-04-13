@@ -5,17 +5,12 @@ const sensores = [
   { id: "S4", status: "online", tempF: 95 }, // 35°C
 ];
 
-const filtroSensor = sensores.filter((p) => p.status === "online");
+const filtroSensor = sensores
+  .filter((p) => p.status === "online")
+  .map((p) => ((p.tempF - 32) * 5) / 9)
+  .filter((p) => p >= 35)
+  .reduce((acc, atual, index, arrayAtual) => {
+    return (acc + atual) / arrayAtual.length;
+  }, 0);
+
 console.log(filtroSensor);
-
-const alteraTemperatura = filtroSensor.map((p) => ((p.tempF - 32) * 5) / 9);
-console.log(alteraTemperatura);
-
-const filtroAlerta = alteraTemperatura.filter((p) => p >= 35);
-console.log(filtroAlerta);
-
-const mediaTemp = filtroAlerta.reduce((acc, atual, index, arrayAtual) => {
-  return (acc + atual) / arrayAtual.length;
-}, 0);
-
-console.log(mediaTemp);
