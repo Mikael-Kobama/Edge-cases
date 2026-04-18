@@ -5,6 +5,19 @@ const ec2 = [
   { id: "i-4", region: "us-east-1", cost: 2, uptime: 100 },
 ];
 
-const fitro = ec2.filter((p) => p.uptime > 24);
+const fitro = ec2
+  .filter((p) => p.uptime > 24)
+  .reduce((acc, item) => {
+    if (acc[item.region]) {
+      acc[item.region] += item.cost * item.uptime;
+    } else {
+      acc[item.region] = item.cost * item.uptime;
+    }
+    return acc;
+  }, {});
 
-console.log(fitro);
+const filtroFinal = Object.fromEntries(
+  Object.entries(fitro).filter((p) => p[1] > 300),
+);
+
+console.log(JSON.stringify(filtroFinal, null, 2));
