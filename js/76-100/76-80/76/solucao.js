@@ -6,8 +6,25 @@ const buckets = [
 ];
 
 const permitidas = [`us-east-1`, `sa-east-1`, `us-west-2`];
-const filtroBuckets = buckets
-  .map((p) => p.bucketName)
-  .filter((p) => p.length <= 63);
+const filtroBuckets = buckets.map((p) => {
+  const errors = [];
+  const valid = [];
+
+  if (p.bucketName !== p.bucketName.toLowerCase())
+    errors.push("errors: Nome do bucket não pode ter maiúsculas");
+  if (p.bucketName.length < 3)
+    errors.push("errors: Nome do bucket precisa de mais caracteres");
+  if (p.bucketName.length > 63)
+    errors.push("errors: Nome do bucket precisa de menos caracteres");
+  if (!permitidas.some((r) => r === p.region))
+    errors.push("errors: Regiao invalida");
+  if (errors.length === 0) valid.push("Valid: Regiao Aprovada");
+
+  return {
+    bucketName: p.bucketName,
+    isValid: valid,
+    errors,
+  };
+});
 
 console.log(filtroBuckets);
