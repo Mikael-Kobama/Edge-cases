@@ -7,7 +7,6 @@ const tarefas = [
 const indiceRemissivo = tarefas.reduce((acc, att) => {
   att.tags.forEach((tag) => {
     acc[tag] ? acc[tag].push(att.titulo) : (acc[tag] = [att.titulo]);
-    return acc;
   });
   return acc;
 }, {});
