@@ -9,9 +9,21 @@ const parametros = {
 };
 
 const filtroParametro = Object.entries(parametros)
-  .filter((p) => p[1] !== null)
+  .filter((p) => p[1] !== null && p[1] !== undefined && p[1] !== "")
   .map((p) => {
-    if (Array.isArray(p[1])) return p;
-  });
+    if (Array.isArray(p[1])) {
+      return p[1].map((valor) => p[0] + "=" + encodeURIComponent(valor));
+    } else {
+      return p[0] + "=" + encodeURIComponent(p[1]);
+    }
 
-console.log(filtroParametro);
+    return p;
+  })
+  .flat()
+  .sort()
+  .reduce((acc, att) => {
+    return acc + "&" + att;
+  });
+const resultado = "?" + filtroParametro;
+
+console.log(resultado);
