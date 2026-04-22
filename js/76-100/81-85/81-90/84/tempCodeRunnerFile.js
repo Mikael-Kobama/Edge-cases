@@ -1,0 +1,1 @@
+if (limpaDados.length < 13 || limpaDados > 16) return "Número Inválido";
