@@ -80,3 +80,95 @@ const pedidos = [
     categoria: "Periféricos",
   },
 ];
+
+function validarEstoque(pedido) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (pedido.quantidade > 10) {
+        reject({ pedido, status: "erro" });
+      } else {
+        resolve({ pedido, status: "validado" });
+      }
+    }, 400);
+  });
+}
+
+function validarPagamento(pedido) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (pedido.quantidade * pedido.preco > 5000) {
+        reject({ pedido, status: "erro" });
+      } else {
+        resolve({ pedido, status: "validado" });
+      }
+    }, 600);
+  });
+}
+
+function processarEnvio(pedido) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (pedido.categoria === "Perigosos") {
+        reject({ pedido, status: "erro" });
+      } else {
+        resolve({ pedido, status: "validado" });
+      }
+    }, 300);
+  });
+}
+
+async function processarPedido(pedido) {
+  const passos = [];
+  try {
+    await validarEstoque(pedido);
+    passos.push("Estoque"); // etapa 1
+  } catch (erro) {
+    return { status: "REJEITADO", falhouEm: "Estoque", passos };
+  }
+
+  try {
+    await validarPagamento(pedido);
+    passos.push("Pagamento");
+  } catch (error) {
+    return { status: "REJEITADO", falhouEm: "Pagamento", passos };
+  }
+
+  try {
+    await processarEnvio(pedido);
+    passos.push("Envio");
+  } catch (error) {
+    return { status: "REJEITADO", falhouEm: "Envio", passos };
+  }
+  return { status: "CONCLUÍDO", passos, pedido };
+}
+
+function processarLote(pedidosTotais) {
+  const promises = pedidosTotais.map((pedido) => processarPedido(pedido));
+  return Promise.allSettled(promises);
+}
+
+processarLote(pedidos).then((resultado) => {
+  const sucessos = resultado.filter((p) => p.value.status === "CONCLUÍDO");
+
+  const falhas = resultado.filter((p) => p.value.status === "REJEITADO");
+
+  const faturamentoLiquido = sucessos.reduce((acc, att) => {
+    acc += att.value.pedido.preco * att.value.pedido.quantidade;
+    return acc;
+  }, 0);
+
+  const perdaEstimada = falhas.reduce((acc, att) => {
+    acc += att.value.pedido.preco * att.value.pedido.quantidade;
+    return acc;
+  }, 0);
+
+  const taxadeSucesso = (sucessos.length / pedidos.length) * 100 + "%";
+  // const gargalo = resultado
+
+  console.log({
+    faturamentoLiquido,
+    perdaEstimada,
+    taxadeSucesso,
+    // gargalo,
+  });
+});
