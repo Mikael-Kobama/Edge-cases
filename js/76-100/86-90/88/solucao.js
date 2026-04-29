@@ -123,27 +123,27 @@ async function processarPedido(pedido) {
     await validarEstoque(pedido);
     passos.push("Estoque"); // etapa 1
   } catch (erro) {
-    return { status: "REJEITADO", falhouEm: "Estoque", passos };
+    return { status: "REJEITADO", falhouEm: "Estoque", passos, pedido };
   }
 
   try {
     await validarPagamento(pedido);
     passos.push("Pagamento");
   } catch (error) {
-    return { status: "REJEITADO", falhouEm: "Pagamento", passos };
+    return { status: "REJEITADO", falhouEm: "Pagamento", passos, pedido };
   }
 
   try {
     await processarEnvio(pedido);
     passos.push("Envio");
   } catch (error) {
-    return { status: "REJEITADO", falhouEm: "Envio", passos };
+    return { status: "REJEITADO", falhouEm: "Envio", passos, pedido };
   }
   return { status: "CONCLUÍDO", passos, pedido };
 }
 
-function processarLote(pedidosTotais) {
-  const promises = pedidosTotais.map((pedido) => processarPedido(pedido));
+function processarLote(pedidos) {
+  const promises = pedidos.map((pedido) => processarPedido(pedido));
   return Promise.allSettled(promises);
 }
 
@@ -163,12 +163,20 @@ processarLote(pedidos).then((resultado) => {
   }, 0);
 
   const taxadeSucesso = (sucessos.length / pedidos.length) * 100 + "%";
-  // const gargalo = resultado
+  const contagemGargalo = falhas.reduce((acc, att) => {
+    acc[att.value.falhouEm]
+      ? (acc[att.value.falhouEm] += 1)
+      : (acc[att.value.falhouEm] = 1);
+    return acc;
+  }, {});
+  const gargalo = Object.entries(contagemGargalo).reduce((acc, att) => {
+    return att[1] > acc[1] ? att : acc;
+  })[0];
 
   console.log({
     faturamentoLiquido,
     perdaEstimada,
     taxadeSucesso,
-    // gargalo,
+    gargalo,
   });
 });
