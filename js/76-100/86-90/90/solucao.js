@@ -418,19 +418,29 @@ class ClusterMonitor {
 
   analisarCarga(log) {
     if (log.cpu > 90 && log.memoria > 80) {
+      this.servidoresCriticos.add(log.id);
       return { ...log, status: "CRITICAL" };
-    } else if (log.msg === "Timeout"){
+    } else if (log.msg === "Timeout") {
       return { ...log, status: "ERROR" };
     } else {
-      return log
+      return log;
     }
   }
   verificarErros(log) {
-    let contadorCache = []
-
-    if ()
+    if (log.msg.includes("Timeout")) {
+      const contadorAtual = this.cacheAlertas.get(log.id) || 0;
+      const novoContador = contadorAtual + 1;
+      this.cacheAlertas.set(log.id, novoContador);
+      if (novoContador >= 5) {
+        this.alertasSuprimidos += 1;
+        return { ...log, status: "SUPPRESSED" };
+      } else {
+        return { ...log, status: "ERROR" };
+      }
+    } else {
+      return log;
+    }
   }
-
 
   async processarLog(log) {
     const etapas = [this.sanitizar, this.analisarCarga, this.verificarErros];
@@ -446,5 +456,29 @@ class ClusterMonitor {
     return resultado;
   }
 
-  gerarRelatorio(resultados) {}
+  gerarRelatorio(resultados) {
+    const logs = resultados.map((p) => p.value);
+
+    const logsOnline = logs.filter(
+      (log) =>
+        log.status !== "CRITICAL" &&
+        log.status !== "ERROR" &&
+        log.status !== "SUPPRESSED",
+    );
+    const logsCriticos = logs.filter((log) => log.status === "CRITICAL");
+    const logsErro = logs.filter((log) => log.status === "ERROR");
+    const logsSuprimidos = logs.filter((log) => log.status === "SUPPRESSED");
+
+    const uptimeGeral = (logsOnline.length / logs.length) * 100;
+
+    const mapaDeErros = logs.reduce((logAcc, logAtt) => {
+      logAcc[logAtt] = (logAcc[logAtt] || 0) + 1;
+      return logAcc;
+    }, {});
+
+    const servidoresCriticos = [...this.servidoresCriticos].map((id) => {
+      const resultadoLog = logs.find((log) => log.id === id);
+      return { id, ip: resultadoLog.ip };
+    });
+  }
 }
