@@ -412,7 +412,7 @@ class ClusterMonitor {
   sanitizar(log) {
     return {
       ...log,
-      timestamp: new Date(log.timestamp).toLocaleString("pt-BR"),
+      timestamp: new Date(log.timestamp * 1000).toLocaleString("pt-BR"),
     };
   }
 
@@ -471,8 +471,8 @@ class ClusterMonitor {
 
     const uptimeGeral = (logsOnline.length / logs.length) * 100;
 
-    const mapaDeErros = logs.reduce((logAcc, logAtt) => {
-      logAcc[logAtt] = (logAcc[logAtt] || 0) + 1;
+    const mapaDeErros = logsErro.reduce((logAcc, logAtt) => {
+      logAcc[logAtt.msg] = (logAcc[logAtt.msg] || 0) + 1;
       return logAcc;
     }, {});
 
@@ -480,5 +480,23 @@ class ClusterMonitor {
       const resultadoLog = logs.find((log) => log.id === id);
       return { id, ip: resultadoLog.ip };
     });
+
+    const economiaProcessamento = this.alertasSuprimidos;
+
+    return {
+      uptimeGeral,
+      mapaDeErros,
+      servidoresCriticos,
+      economiaProcessamento,
+      logsCriticos,
+      logsErro,
+      logsSuprimidos,
+    };
   }
 }
+
+const cluster = new ClusterMonitor();
+cluster
+  .processarLote(logEventos)
+  .then((resultado) => cluster.gerarRelatorio(resultado))
+  .then(console.log);

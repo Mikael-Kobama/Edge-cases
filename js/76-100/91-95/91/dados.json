@@ -1,0 +1,457 @@
+[
+  {
+    "id": "tx-001",
+    "desc": "  supermercado bh  ",
+    "valor": "R$ 250,50",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-002",
+    "desc": "POSTO IPIRANGA",
+    "valor": 150.0,
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-003",
+    "desc": "NETFLIX assinatura",
+    "valor": "R$ 55,90",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-004",
+    "desc": "ALUGUEL apto 201",
+    "valor": "2500,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-005",
+    "desc": "uberrr trip",
+    "valor": "R$ 25,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-006",
+    "desc": "RESTAURANTE LANCHE",
+    "valor": "R$ 45,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-007",
+    "desc": "compras amazon",
+    "valor": "5200,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-008",
+    "desc": "CONDOMINIO",
+    "valor": "R$ 400.00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-009",
+    "desc": "ifood burger",
+    "valor": "85,90",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-010",
+    "desc": "  passagem aerea  ",
+    "valor": "R$ 1200,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-011",
+    "desc": "Spotify Family",
+    "valor": "34,90",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-012",
+    "desc": "Farmacia DrogaRaia",
+    "valor": "R$ 110,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-013",
+    "desc": "Padaria do Ze",
+    "valor": "15,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-014",
+    "desc": "Academia Smart",
+    "valor": "119,90",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-015",
+    "desc": "Cinema Shopping",
+    "valor": "60,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-016",
+    "desc": "  UbeR TrIp  ",
+    "valor": "22.50",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-017",
+    "desc": "Restaurante Gourmet",
+    "valor": "R$ 450,00",
+    "tipo": "Alimentação"
+  },
+  { "id": "tx-018", "desc": "CONTA DE LUZ", "valor": "320,15", "tipo": "Fixa" },
+  {
+    "id": "tx-019",
+    "desc": "Steam Games",
+    "valor": "R$ 150,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-020",
+    "desc": "Internet Fibra",
+    "valor": "99,90",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-021",
+    "desc": "Padaria Principal",
+    "valor": "R$ 12,50",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-022",
+    "desc": "Gasolina Comum",
+    "valor": "R$ 280,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-023",
+    "desc": "Assinatura Jornal",
+    "valor": "29,90",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-024",
+    "desc": "Hospital Central",
+    "valor": "1500,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-025",
+    "desc": "Supermercado Extra",
+    "valor": "R$ 890,40",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-026",
+    "desc": "Uber Black",
+    "valor": "R$ 85,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-027",
+    "desc": "Manutencao Carro",
+    "valor": "R$ 1200,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-028",
+    "desc": "Show de Rock",
+    "valor": "450,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-029",
+    "desc": "Seguro Vida",
+    "valor": "R$ 85,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-030",
+    "desc": "Pizza Delivery",
+    "valor": "R$ 75,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-031",
+    "desc": "Terapia Semanal",
+    "valor": "180,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-032",
+    "desc": "Estacionamento",
+    "valor": "R$ 45,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-033",
+    "desc": "Loja de Roupas",
+    "valor": "350,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-034",
+    "desc": "Conta de Agua",
+    "valor": "R$ 85,40",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-035",
+    "desc": "Alimentacao Pet",
+    "valor": "120,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-036",
+    "desc": "  Pedagio Rodovia  ",
+    "valor": "R$ 14,20",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-037",
+    "desc": "Exame Laboratorio",
+    "valor": "320,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-038",
+    "desc": "Ingresso Museu",
+    "valor": "R$ 30,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-039",
+    "desc": "Mensalidade Escola",
+    "valor": "1800,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-040",
+    "desc": "Fruteira Da Esquina",
+    "valor": "R$ 45,60",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-041",
+    "desc": "Mecanico Urgente",
+    "valor": "R$ 4500,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-042",
+    "desc": "Viagem Cancun",
+    "valor": "15000,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-043",
+    "desc": "Hospedagem Hotel",
+    "valor": "R$ 850,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-044",
+    "desc": "Drogaria Sao Paulo",
+    "valor": "55,20",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-045",
+    "desc": "Churrascaria",
+    "valor": "R$ 220,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-046",
+    "desc": "IPTU Parcelado",
+    "valor": "R$ 150,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-047",
+    "desc": "Lava Jato",
+    "valor": "60,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-048",
+    "desc": "Twitch Bits",
+    "valor": "R$ 15,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-049",
+    "desc": "Açougue Boi",
+    "valor": "185,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-050",
+    "desc": "Psicologo",
+    "valor": "R$ 200,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-051",
+    "desc": "Licenciamento",
+    "valor": "250,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-052",
+    "desc": "Disney Plus",
+    "valor": "R$ 33,90",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-053",
+    "desc": "Gas de Cozinha",
+    "valor": "110,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-054",
+    "desc": "Sacolao",
+    "valor": "R$ 65,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-055",
+    "desc": "Dentista Canal",
+    "valor": "1200,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-056",
+    "desc": "Cafeteria Starbucks",
+    "valor": "R$ 28,00",
+    "tipo": "Alimentação"
+  },
+  { "id": "tx-057", "desc": "Manicure", "valor": "50,00", "tipo": "Lazer" },
+  {
+    "id": "tx-058",
+    "desc": "Revisao 10k",
+    "valor": "R$ 900,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-059",
+    "desc": "Clube de Vinho",
+    "valor": "150,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-060",
+    "desc": "Condominio Atrasado",
+    "valor": "R$ 450,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-061",
+    "desc": "Padaria Cafe",
+    "valor": "18,50",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-062",
+    "desc": "Curso Online",
+    "valor": "R$ 499,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-063",
+    "desc": "Consulta Vista",
+    "valor": "300,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-064",
+    "desc": "Troca de Oleo",
+    "valor": "R$ 220,00",
+    "tipo": "Transporte"
+  },
+  { "id": "tx-065", "desc": "Plano Celular", "valor": "79,90", "tipo": "Fixa" },
+  {
+    "id": "tx-066",
+    "desc": "Mercado Dia",
+    "valor": "R$ 340,00",
+    "tipo": "Alimentação"
+  },
+  { "id": "tx-067", "desc": "Bar da Vila", "valor": "120,00", "tipo": "Lazer" },
+  {
+    "id": "tx-068",
+    "desc": "Multa Transito",
+    "valor": "R$ 195,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-069",
+    "desc": "Emprestimo Banco",
+    "valor": "850,00",
+    "tipo": "Fixa"
+  },
+  {
+    "id": "tx-070",
+    "desc": "Hamburgueria Artesanal",
+    "valor": "R$ 95,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-071",
+    "desc": "Suplementos Whey",
+    "valor": "250,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-072",
+    "desc": "Pedagio Retorno",
+    "valor": "R$ 14,20",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-073",
+    "desc": "Show Comedia",
+    "valor": "R$ 80,00",
+    "tipo": "Lazer"
+  },
+  { "id": "tx-074", "desc": "Tv a Cabo", "valor": "180,00", "tipo": "Fixa" },
+  {
+    "id": "tx-075",
+    "desc": "Peixaria Mar",
+    "valor": "R$ 115,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-076",
+    "desc": "Remedio Pressao",
+    "valor": "R$ 45,00",
+    "tipo": "Saúde"
+  },
+  {
+    "id": "tx-077",
+    "desc": "Estacionamento Shopping",
+    "valor": "25,00",
+    "tipo": "Transporte"
+  },
+  {
+    "id": "tx-078",
+    "desc": "Jogos Mobile",
+    "valor": "R$ 10,00",
+    "tipo": "Lazer"
+  },
+  {
+    "id": "tx-079",
+    "desc": "Sorveteria",
+    "valor": "35,00",
+    "tipo": "Alimentação"
+  },
+  {
+    "id": "tx-080",
+    "desc": "Tarifa Bancaria",
+    "valor": "R$ 42,00",
+    "tipo": "Fixa"
+  }
+]
