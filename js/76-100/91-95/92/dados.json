@@ -1,0 +1,810 @@
+[
+  {
+    "id": "u001",
+    "nome": "Mikael123",
+    "email": "mikael@test.com",
+    "idade": 25,
+    "perfil": "ADMIN",
+    "tags": ["dev", "node"]
+  },
+  {
+    "id": "u002",
+    "nome": "An@",
+    "email": "ana.gmail.com",
+    "idade": 17,
+    "perfil": "USER",
+    "tags": []
+  },
+  {
+    "id": "u003",
+    "nome": "  Bruno  ",
+    "email": "bruno@empresa.org",
+    "idade": 30,
+    "perfil": "GUEST",
+    "tags": null
+  },
+  {
+    "id": "u004",
+    "nome": "Carla_$$",
+    "email": "carla@web.br",
+    "idade": 105,
+    "perfil": "ADMIN",
+    "tags": ["lead"]
+  },
+  {
+    "id": "u005",
+    "nome": "D",
+    "email": "diego@provider",
+    "idade": 19,
+    "perfil": "OWNER",
+    "tags": ["test"]
+  },
+  {
+    "id": "u001",
+    "nome": "Mikael Duplicado",
+    "email": "mika2@test.com",
+    "idade": 26,
+    "perfil": "USER",
+    "tags": ["copy"]
+  },
+  {
+    "id": "u006",
+    "nome": "Elena99",
+    "email": "elena@host.com",
+    "idade": 22,
+    "perfil": "GUEST",
+    "tags": ["social"]
+  },
+  {
+    "id": "u007",
+    "nome": "Fabio",
+    "email": "fabio@com",
+    "idade": 40,
+    "perfil": "USER",
+    "tags": "não-sou-array"
+  },
+  {
+    "id": "u008",
+    "nome": "Gabi!",
+    "email": "gabi@site.com",
+    "idade": 18,
+    "perfil": "ADMIN",
+    "tags": []
+  },
+  {
+    "id": "u009",
+    "nome": "Hugo_00",
+    "email": "hugo@bol.com",
+    "idade": 50,
+    "perfil": "GUEST",
+    "tags": ["manager"]
+  },
+  {
+    "id": "u010",
+    "nome": "Iara",
+    "email": "iara@outlook.com",
+    "idade": 21,
+    "perfil": "USER",
+    "tags": ["frontend"]
+  },
+  {
+    "id": "u011",
+    "nome": "Joao_99",
+    "email": "joao@web.com",
+    "idade": 15,
+    "perfil": "USER",
+    "tags": ["intern"]
+  },
+  {
+    "id": "u012",
+    "nome": "Kaka",
+    "email": "kaka@test.com",
+    "idade": 88,
+    "perfil": "GUEST",
+    "tags": ["legacy"]
+  },
+  {
+    "id": "u013",
+    "nome": "Lara-Silva",
+    "email": "lara@site.net",
+    "idade": 27,
+    "perfil": "ADMIN",
+    "tags": ["ceo"]
+  },
+  {
+    "id": "u014",
+    "nome": "Mario10",
+    "email": "mario@nintendo.com",
+    "idade": 45,
+    "perfil": "USER",
+    "tags": ["plumber"]
+  },
+  {
+    "id": "u015",
+    "nome": "Nadia",
+    "email": "nadia@mail.com",
+    "idade": 33,
+    "perfil": "GUEST",
+    "tags": ["hr"]
+  },
+  {
+    "id": "u016",
+    "nome": "Otavio",
+    "email": "otavio@web.com",
+    "idade": 19,
+    "perfil": "USER",
+    "tags": ["backend"]
+  },
+  {
+    "id": "u017",
+    "nome": "Paula_#",
+    "email": "paula@test.br",
+    "idade": 24,
+    "perfil": "ADMIN",
+    "tags": ["security"]
+  },
+  {
+    "id": "u018",
+    "nome": "Quiteria",
+    "email": "quiteria@mail.com",
+    "idade": 60,
+    "perfil": "GUEST",
+    "tags": ["expert"]
+  },
+  {
+    "id": "u019",
+    "nome": "Ronaldo7",
+    "email": "cr7@ball.com",
+    "idade": 38,
+    "perfil": "USER",
+    "tags": ["sports"]
+  },
+  {
+    "id": "u020",
+    "nome": "S",
+    "email": "s@s.com",
+    "idade": 20,
+    "perfil": "ADMIN",
+    "tags": []
+  },
+  {
+    "id": "u021",
+    "nome": "Tiago!",
+    "email": "tiago@site.com",
+    "idade": 29,
+    "perfil": "USER",
+    "tags": ["dev"]
+  },
+  {
+    "id": "u022",
+    "nome": "Ulysses",
+    "email": "u@poly.edu",
+    "idade": 44,
+    "perfil": "GUEST",
+    "tags": ["professor"]
+  },
+  {
+    "id": "u023",
+    "nome": "Vitor_V",
+    "email": "vitor@v.com",
+    "idade": 18,
+    "perfil": "ADMIN",
+    "tags": ["newbie"]
+  },
+  {
+    "id": "u024",
+    "nome": "Wagner",
+    "email": "w@w.com",
+    "idade": 55,
+    "perfil": "USER",
+    "tags": ["senior"]
+  },
+  {
+    "id": "u025",
+    "nome": "Xuxa",
+    "email": "xuxa@globo.com",
+    "idade": 60,
+    "perfil": "GUEST",
+    "tags": ["tv"]
+  },
+  {
+    "id": "u026",
+    "nome": "Yara",
+    "email": "yara@mail.com",
+    "idade": 21,
+    "perfil": "USER",
+    "tags": ["marketing"]
+  },
+  {
+    "id": "u027",
+    "nome": "Zeca_Pagodinho",
+    "email": "zeca@samba.com",
+    "idade": 65,
+    "perfil": "ADMIN",
+    "tags": ["music"]
+  },
+  {
+    "id": "u028",
+    "nome": "Ariel",
+    "email": "ariel@ocean.com",
+    "idade": 16,
+    "perfil": "GUEST",
+    "tags": ["sea"]
+  },
+  {
+    "id": "u029",
+    "nome": "Beto",
+    "email": "beto@obra.com",
+    "idade": 42,
+    "perfil": "USER",
+    "tags": ["builder"]
+  },
+  {
+    "id": "u030",
+    "nome": "Caio_12",
+    "email": "caio@site.com",
+    "idade": 31,
+    "perfil": "ADMIN",
+    "tags": ["sales"]
+  },
+  {
+    "id": "u031",
+    "nome": "Davi",
+    "email": "davi@biblia.com",
+    "idade": 22,
+    "perfil": "GUEST",
+    "tags": ["history"]
+  },
+  {
+    "id": "u032",
+    "nome": "Ester",
+    "email": "ester@mail.com",
+    "idade": 28,
+    "perfil": "USER",
+    "tags": ["finance"]
+  },
+  {
+    "id": "u033",
+    "nome": "Felipe",
+    "email": "felipe@test.com",
+    "idade": 35,
+    "perfil": "ADMIN",
+    "tags": ["analyst"]
+  },
+  {
+    "id": "u034",
+    "nome": "Gilda",
+    "email": "gilda@site.com",
+    "idade": 70,
+    "perfil": "GUEST",
+    "tags": ["retired"]
+  },
+  {
+    "id": "u035",
+    "nome": "Heitor",
+    "email": "heitor@web.com",
+    "idade": 19,
+    "perfil": "USER",
+    "tags": ["student"]
+  },
+  {
+    "id": "u036",
+    "nome": "Iris",
+    "email": "iris@flower.com",
+    "idade": 24,
+    "perfil": "ADMIN",
+    "tags": ["bio"]
+  },
+  {
+    "id": "u037",
+    "nome": "Jorge",
+    "email": "jorge@mail.com",
+    "idade": 50,
+    "perfil": "GUEST",
+    "tags": ["driver"]
+  },
+  {
+    "id": "u038",
+    "nome": "Kelly",
+    "email": "kelly@show.com",
+    "idade": 30,
+    "perfil": "USER",
+    "tags": ["singer"]
+  },
+  {
+    "id": "u039",
+    "nome": "Leo_90",
+    "email": "leo@host.com",
+    "idade": 32,
+    "perfil": "ADMIN",
+    "tags": ["tech"]
+  },
+  {
+    "id": "u040",
+    "nome": "Mara",
+    "email": "mara@test.com",
+    "idade": 27,
+    "perfil": "USER",
+    "tags": ["ops"]
+  },
+  {
+    "id": "u041",
+    "nome": "Nuno",
+    "email": "nuno@nuno.pt",
+    "idade": 41,
+    "perfil": "GUEST",
+    "tags": ["intl"]
+  },
+  {
+    "id": "u042",
+    "nome": "Olga",
+    "email": "olga@mail.ru",
+    "idade": 36,
+    "perfil": "USER",
+    "tags": ["qa"]
+  },
+  {
+    "id": "u043",
+    "nome": "Pietro_22",
+    "email": "pietro@web.it",
+    "idade": 22,
+    "perfil": "ADMIN",
+    "tags": ["design"]
+  },
+  {
+    "id": "u044",
+    "nome": "Rosa",
+    "email": "rosa@flower.br",
+    "idade": 55,
+    "perfil": "USER",
+    "tags": ["support"]
+  },
+  {
+    "id": "u045",
+    "nome": "Sandro!",
+    "email": "sandro@work.com",
+    "idade": 39,
+    "perfil": "GUEST",
+    "tags": ["legal"]
+  },
+  {
+    "id": "u046",
+    "nome": "Tati",
+    "email": "tati@test.com",
+    "idade": 26,
+    "perfil": "ADMIN",
+    "tags": ["marketing"]
+  },
+  {
+    "id": "u047",
+    "nome": "Uram",
+    "email": "uram@provider.com",
+    "idade": 31,
+    "perfil": "USER",
+    "tags": ["dev"]
+  },
+  {
+    "id": "u048",
+    "nome": "Vera_99",
+    "email": "vera@site.com",
+    "idade": 62,
+    "perfil": "GUEST",
+    "tags": ["writer"]
+  },
+  {
+    "id": "u049",
+    "nome": "Will",
+    "email": "will@mail.com",
+    "idade": 20,
+    "perfil": "ADMIN",
+    "tags": ["trainee"]
+  },
+  {
+    "id": "u050",
+    "nome": "Xico",
+    "email": "xico@samba.com",
+    "idade": 47,
+    "perfil": "USER",
+    "tags": ["chef"]
+  },
+  {
+    "id": "u051",
+    "nome": "Yuri",
+    "email": "yuri@space.com",
+    "idade": 33,
+    "perfil": "GUEST",
+    "tags": ["pilot"]
+  },
+  {
+    "id": "u052",
+    "nome": "Zuleica",
+    "email": "zu@mail.com",
+    "idade": 68,
+    "perfil": "ADMIN",
+    "tags": ["retired"]
+  },
+  {
+    "id": "u053",
+    "nome": "Bia_1",
+    "email": "bia@test.com",
+    "idade": 23,
+    "perfil": "USER",
+    "tags": ["art"]
+  },
+  {
+    "id": "u054",
+    "nome": "Caio",
+    "email": "caio@caio",
+    "idade": 12,
+    "perfil": "GUEST",
+    "tags": ["kid"]
+  },
+  {
+    "id": "u055",
+    "nome": "Dora",
+    "email": "dora@exploradora.com",
+    "idade": 28,
+    "perfil": "USER",
+    "tags": ["map"]
+  },
+  {
+    "id": "u056",
+    "nome": "Eder",
+    "email": "eder@work.com",
+    "idade": 35,
+    "perfil": "ADMIN",
+    "tags": ["manager"]
+  },
+  {
+    "id": "u057",
+    "nome": "Fani",
+    "email": "fani@mail.com",
+    "idade": 22,
+    "perfil": "GUEST",
+    "tags": []
+  },
+  {
+    "id": "u058",
+    "nome": "Guto",
+    "email": "guto@site.com",
+    "idade": 30,
+    "perfil": "USER",
+    "tags": ["sales"]
+  },
+  {
+    "id": "u059",
+    "nome": "Hilda",
+    "email": "hilda@magic.com",
+    "idade": 90,
+    "perfil": "ADMIN",
+    "tags": ["witch"]
+  },
+  {
+    "id": "u060",
+    "nome": "Igor_!",
+    "email": "igor@test.com",
+    "idade": 24,
+    "perfil": "USER",
+    "tags": ["dev"]
+  },
+  {
+    "id": "u061",
+    "nome": "Jana",
+    "email": "jana@mail.com",
+    "idade": 29,
+    "perfil": "GUEST",
+    "tags": ["hr"]
+  },
+  {
+    "id": "u062",
+    "nome": "Kito",
+    "email": "kito@provider.com",
+    "idade": 44,
+    "perfil": "ADMIN",
+    "tags": ["legal"]
+  },
+  {
+    "id": "u063",
+    "nome": "Luma",
+    "email": "luma@luma.com",
+    "idade": 21,
+    "perfil": "USER",
+    "tags": ["model"]
+  },
+  {
+    "id": "u064",
+    "nome": "Miro",
+    "email": "miro@art.com",
+    "idade": 52,
+    "perfil": "GUEST",
+    "tags": ["painter"]
+  },
+  {
+    "id": "u065",
+    "nome": "Nero_#",
+    "email": "nero@rome.com",
+    "idade": 33,
+    "perfil": "USER",
+    "tags": ["fire"]
+  },
+  {
+    "id": "u066",
+    "nome": "Olavo",
+    "email": "olavo@site.com",
+    "idade": 48,
+    "perfil": "ADMIN",
+    "tags": ["writer"]
+  },
+  {
+    "id": "u067",
+    "nome": "Pilar",
+    "email": "pilar@bridge.com",
+    "idade": 37,
+    "perfil": "GUEST",
+    "tags": ["eng"]
+  },
+  {
+    "id": "u068",
+    "nome": "Quico",
+    "email": "quico@vila.com",
+    "idade": 18,
+    "perfil": "USER",
+    "tags": ["actor"]
+  },
+  {
+    "id": "u069",
+    "nome": "Raul",
+    "email": "raul@rock.com",
+    "idade": 60,
+    "perfil": "ADMIN",
+    "tags": ["music"]
+  },
+  {
+    "id": "u070",
+    "nome": "Sara",
+    "email": "sara@mail.com",
+    "idade": 25,
+    "perfil": "USER",
+    "tags": ["nurse"]
+  },
+  {
+    "id": "u071",
+    "nome": "Tico",
+    "email": "tico@bird.com",
+    "idade": 19,
+    "perfil": "GUEST",
+    "tags": ["pet"]
+  },
+  {
+    "id": "u072",
+    "nome": "Uriel",
+    "email": "uriel@angel.com",
+    "idade": 22,
+    "perfil": "ADMIN",
+    "tags": ["guard"]
+  },
+  {
+    "id": "u073",
+    "nome": "Vania",
+    "email": "vania@test.com",
+    "idade": 41,
+    "perfil": "USER",
+    "tags": ["cook"]
+  },
+  {
+    "id": "u074",
+    "nome": "Wilson_1",
+    "email": "wilson@castaway.com",
+    "idade": 45,
+    "perfil": "GUEST",
+    "tags": ["lost"]
+  },
+  {
+    "id": "u075",
+    "nome": "Xenia",
+    "email": "xenia@warrior.com",
+    "idade": 34,
+    "perfil": "ADMIN",
+    "tags": ["sword"]
+  },
+  {
+    "id": "u076",
+    "nome": "Yago",
+    "email": "yago@mail.com",
+    "idade": 20,
+    "perfil": "USER",
+    "tags": ["student"]
+  },
+  {
+    "id": "u077",
+    "nome": "Zion",
+    "email": "zion@matrix.com",
+    "idade": 26,
+    "perfil": "GUEST",
+    "tags": ["neo"]
+  },
+  {
+    "id": "u078",
+    "nome": "Alan_X",
+    "email": "alan@web.com",
+    "idade": 31,
+    "perfil": "USER",
+    "tags": ["dev"]
+  },
+  {
+    "id": "u079",
+    "nome": "Bia",
+    "email": "bia@mail.com",
+    "idade": 150,
+    "perfil": "ADMIN",
+    "tags": ["vampire"]
+  },
+  {
+    "id": "u080",
+    "nome": "Ciro",
+    "email": "ciro@politics.br",
+    "idade": 65,
+    "perfil": "USER",
+    "tags": ["law"]
+  },
+  {
+    "id": "u081",
+    "nome": "Dudu",
+    "email": "dudu@test.com",
+    "idade": 19,
+    "perfil": "GUEST",
+    "tags": []
+  },
+  {
+    "id": "u082",
+    "nome": "Eli",
+    "email": "eli@mail.com",
+    "idade": 28,
+    "perfil": "ADMIN",
+    "tags": ["manager"]
+  },
+  {
+    "id": "u083",
+    "nome": "Fred_2",
+    "email": "fred@horror.com",
+    "idade": 44,
+    "perfil": "USER",
+    "tags": ["dream"]
+  },
+  {
+    "id": "u084",
+    "nome": "Guto",
+    "email": "guto@guto",
+    "idade": 30,
+    "perfil": "GUEST",
+    "tags": ["test"]
+  },
+  {
+    "id": "u085",
+    "nome": "Ian",
+    "email": "ian@site.com",
+    "idade": 21,
+    "perfil": "USER",
+    "tags": ["trainee"]
+  },
+  {
+    "id": "u086",
+    "nome": "Juca",
+    "email": "juca@mail.com",
+    "idade": 37,
+    "perfil": "ADMIN",
+    "tags": ["senior"]
+  },
+  {
+    "id": "u087",
+    "nome": "Lia_8",
+    "email": "lia@web.com",
+    "idade": 25,
+    "perfil": "USER",
+    "tags": ["social"]
+  },
+  {
+    "id": "u088",
+    "nome": "Mick",
+    "email": "mick@stones.com",
+    "idade": 80,
+    "perfil": "GUEST",
+    "tags": ["rock"]
+  },
+  {
+    "id": "u089",
+    "nome": "Noah",
+    "email": "noah@ark.com",
+    "idade": 600,
+    "perfil": "ADMIN",
+    "tags": ["boat"]
+  },
+  {
+    "id": "u090",
+    "nome": "Otto",
+    "email": "otto@mail.com",
+    "idade": 32,
+    "perfil": "USER",
+    "tags": ["dev"]
+  },
+  {
+    "id": "u091",
+    "nome": "Poli",
+    "email": "poli@test.com",
+    "idade": 22,
+    "perfil": "GUEST",
+    "tags": ["qa"]
+  },
+  {
+    "id": "u092",
+    "nome": "Rui",
+    "email": "rui@site.pt",
+    "idade": 55,
+    "perfil": "USER",
+    "tags": ["exec"]
+  },
+  {
+    "id": "u093",
+    "nome": "Sia",
+    "email": "sia@music.com",
+    "idade": 40,
+    "perfil": "ADMIN",
+    "tags": ["voice"]
+  },
+  {
+    "id": "u094",
+    "nome": "Teo",
+    "email": "teo@mail.com",
+    "idade": 19,
+    "perfil": "USER",
+    "tags": ["design"]
+  },
+  {
+    "id": "u095",
+    "nome": "Ulla",
+    "email": "ulla@web.se",
+    "idade": 44,
+    "perfil": "GUEST",
+    "tags": ["scand"]
+  },
+  {
+    "id": "u096",
+    "nome": "Vick",
+    "email": "vick@vick.com",
+    "idade": 27,
+    "perfil": "ADMIN",
+    "tags": ["hr"]
+  },
+  {
+    "id": "u097",
+    "nome": "Xerxes",
+    "email": "xer@persia.com",
+    "idade": 33,
+    "perfil": "USER",
+    "tags": ["king"]
+  },
+  {
+    "id": "u098",
+    "nome": "Yvone",
+    "email": "yvone@mail.com",
+    "idade": 50,
+    "perfil": "GUEST",
+    "tags": ["retired"]
+  },
+  {
+    "id": "u099",
+    "nome": "Zack",
+    "email": "zack@test.com",
+    "idade": 24,
+    "perfil": "ADMIN",
+    "tags": ["skate"]
+  },
+  {
+    "id": "u100",
+    "nome": "Mikael_Final",
+    "email": "mikael@legend.com",
+    "idade": 30,
+    "perfil": "ADMIN",
+    "tags": ["finish"]
+  }
+]
