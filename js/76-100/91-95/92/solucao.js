@@ -13,22 +13,19 @@ class MotorCadastro {
   validarConta(usuario) {
     let errors = [];
     if (this.idUnico.has(usuario.id)) {
-      this.rejeitados.push(usuario.id);
       errors.push("ID duplicado");
       return { valid: false, errors };
     } else if (!usuario.email.includes("@") || !usuario.email.includes(".")) {
-      this.rejeitados.push(usuario.id);
       errors.push("Email Inválido");
       return { valid: false, errors };
     } else if (usuario.idade < 18 || usuario.idade > 100) {
-      this.rejeitados.push(usuario.id);
       errors.push("Idade Inválida");
       return { valid: false, errors };
     } else if (!["ADMIN", "USER", "GUEST"].includes(usuario.perfil)) {
-      this.rejeitados.push(usuario.id);
       errors.push("Perfil Inválido");
       return { valid: false, errors };
     } else {
+      this.idUnico.add(usuario.id);
       return { valid: true, errors: [] };
     }
   }
@@ -39,39 +36,36 @@ class MotorCadastro {
       .replace(/\s\s+/g, " ")
       .trim();
 
-    let userTag = usuario.tag;
+    let userTag = usuario.tags;
 
     if (!Array.isArray(userTag) || userTag.length === 0) {
+      this.correcoesRealizadas += 1;
       userTag = ["default"];
     }
 
     return {
       ...usuario,
       nome: nomeLimpo,
-      tag: userTag,
+      tags: userTag,
       perfil: usuario.perfil.toUpperCase(),
     };
   }
 
   async processarUsuarios(usuario) {
-    const resultadosProcessados = usuario.map(async (user) => {
+    for (const user of usuario) {
       await new Promise((resolve) => setTimeout(resolve, 30));
       const limpo = this.sanitizar(user);
       const erro = this.validarConta(limpo);
+      const contadorAtual = this.estatisticaPorPerfil.get(limpo.perfil) || 0;
 
-      return { ...limpo, erro };
-    });
-
-    const resultadoFinal = (
-      await Promise.allSettled(resultadosProcessados)
-    ).map((user) => {
-      const valoresUsuarios = user.value;
-      if (valoresUsuarios.erro.valid) {
-        this.aprovados.push(valoresUsuarios);
+      if (erro.valid) {
+        this.aprovados.push(limpo);
+        this.estatisticaPorPerfil.set(limpo.perfil, contadorAtual + 1);
       } else {
-        this.rejeitados.push(valoresUsuarios);
+        this.rejeitados.push(limpo);
       }
-    });
+    }
+
     return {
       aprovados: this.aprovados,
       rejeitados: this.rejeitados,
