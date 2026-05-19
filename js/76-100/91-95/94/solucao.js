@@ -33,6 +33,18 @@ class SupplyChain {
     ]);
   }
 
+  onBeforeProcess(funcao) {
+    if (typeof funcao === "function") {
+      this.hooks.onBefore.push(funcao);
+    }
+  }
+
+  onAfterProcess(funcao) {
+    if (typeof funcao === "function") {
+      this.hooks.onAfter.push(funcao);
+    }
+  }
+
   #verifyIntegrity(data) {
     const numerosId = data.id.replace(/\D/g, "");
     const pesoNumerico = Math.floor(parseFloat(data.weight));
@@ -111,7 +123,30 @@ class SupplyChain {
   }
 
   #formatInternational(data) {
-    const verificaImportacao = data.destination?.endsWith(", BR");
-    const verificaExportacao = data.origin?.endsWith(", BR");
+    const valorInicial = data.value;
+    let valorConvertido = 0;
+    const verificaImportacao =
+      !data.origin?.endsWith(", BR") && data.destination?.endsWith(", BR");
+    const verificaExportacao =
+      data.origin?.endsWith(", BR") && !data.destination?.endsWith(", BR");
+
+    if (verificaExportacao === true) {
+      valorConvertido += valorInicial / this.taxaCambio;
+      this.timeline.push("Valor Convertido em Dolar: " + data.value);
+    } else if (verificaImportacao === true) {
+      valorConvertido += valorInicial * this.taxaCambio;
+      this.timeline.push("Valor Convertido em Real: " + data.value);
+    } else {
+      return data;
+    }
+    return { ...data, valorConvertido };
+  }
+
+  #dispararHooks(momento, data) {
+    const funcoesDoMomento = this.hooks[momento];
+
+    funcoesDoMomento.forEach((funcaoAlerta) => {
+      funcaoAlerta(data);
+    });
   }
 }
