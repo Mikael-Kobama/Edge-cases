@@ -1,5 +1,23 @@
-const fs = require("fs");
-const dados = JSON.parse(fs.readFileSync("./dados.json", "utf-8"));
+const fs = require("fs").promises; // Usa a versão assíncrona (Promises)
+const path = require("path");
+
+class DatabaseRepository {
+  constructor() {
+    this.filePath = path.resolve(__dirname, "dados.json");
+  }
+
+  async findAll() {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      const data = await fs.readFile(this.filePath, "utf-8");
+
+      return JSON.parse(data);
+    } catch (error) {
+      throw new Error(`Erro ao conectar ao Banco de Dados: ${error.message}`);
+    }
+  }
+}
 
 class IntegrityError extends Error {
   constructor(mensagem) {
@@ -149,4 +167,60 @@ class SupplyChain {
       funcaoAlerta(data);
     });
   }
+
+  async processarLote(data) {
+    const TAMANHO_LOTE = 5;
+    for (let i = 0; i < data.length; i += TAMANHO_LOTE) {
+      const lote = data.slice(i, i + TAMANHO_LOTE);
+      const promessasDoLote = lote.map(async (item) => {
+        this.#dispararHooks("onBefore", item);
+        this.#verifyIntegrity(item);
+
+        const itemQuarentena = this.quarentena.some((p) => p.id === item.id);
+        if (itemQuarentena) {
+          return;
+        }
+
+        let itemProcessado = this.#applyTaxMatrix(item);
+        itemProcessado = this.#detectAnomalies(itemProcessado);
+        itemProcessado = this.#formatInternational(itemProcessado);
+
+        this.processados.push(itemProcessado);
+
+        this.#dispararHooks("onAfter", itemProcessado);
+      });
+
+      await Promise.allSettled(promessasDoLote);
+    }
+  }
 }
+
+async function bootstrap() {
+  const repository = new DatabaseRepository();
+  const service = new SupplyChain();
+
+  service.onBeforeProcess((item) =>
+    console.log(`[START] Processando item: ${item.id}`),
+  );
+  service.onAfterProcess((item) =>
+    console.log(`[SUCCESS] Item finalizado: ${item.id}`),
+  );
+
+  try {
+    console.log("Iniciando Aplicação...");
+
+    const dadosDoBanco = await repository.findAll();
+    console.log(`Dados carregados! Total de registros: ${dadosDoBanco.length}`);
+
+    await service.processarLote(dadosDoBanco);
+
+    console.log("\n--- PROCESSAMENTO CONCLUÍDO ---");
+    console.log(`Itens Processados com Sucesso: ${service.processados.length}`);
+    console.log(`Itens Enviados para Quarentena: ${service.quarentena.length}`);
+    console.log("Linha do tempo de eventos:", service.timeline);
+  } catch (error) {
+    console.error("Erro crítico na execução do pipeline:", error.message);
+  }
+}
+
+bootstrap();
