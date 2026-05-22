@@ -58,6 +58,12 @@ class FraudDetectionException extends CustomException {
   }
 }
 
+class CurrencyConversionException extends CustomException {
+  constructor(message) {
+    super(message, "CURRENCY_CONV_ERR");
+  }
+}
+
 class DataSanitizer {
   cleanInputs(event) {
     const sanitized = structuredClone(event);
@@ -110,5 +116,131 @@ class CryptographicValidator {
     } else {
       return event;
     }
+  }
+}
+
+class CurrencyConverter {
+  constructor() {
+    this.regions = new Map([
+      ["BRL→USD", 0.2],
+      ["BRL→EUR", 0.18],
+      ["USD→BRL", 5.0],
+      ["USD→EUR", 0.92],
+      ["EUR→BRL", 5.5],
+      ["EUR→USD", 1.08],
+    ]);
+  }
+
+  convert(amount, fromCurrency, toCurrency) {
+    if (fromCurrency === toCurrency) {
+      return amount;
+    }
+
+    const currencyDestiantion = fromCurrency + "→" + toCurrency;
+
+    let totalDestination = this.regions.get(currencyDestiantion);
+
+    if (!totalDestination) {
+      throw new CurrencyConversionException(
+        `Par de moedas não suportado: ${currencyDestiantion}`,
+      );
+    }
+
+    const valorFinal = totalDestination * amount;
+
+    return valorFinal;
+  }
+
+  calculateSpread(amount) {
+    const valorDefict = amount * 0.025;
+    const total = amount - valorDefict;
+
+    return total;
+  }
+}
+
+class RiskMatrixEngine {
+  evaluateRiskProfile(currentEvent, historyLog) {
+    const filtertime = historyLog.filter(
+      (event) =>
+        event.accountId === currentEvent.accountId &&
+        event.timestamp > currentEvent.timestamp - 10,
+    );
+
+    if (filtertime.length > 3) {
+      throw new FraudDetectionException(
+        "Erro De validacação " + currentEvent.accountId,
+      );
+    }
+
+    const recentTransactions = historyLog.filter(
+      (event) =>
+        event.accountId === currentEvent.accountId &&
+        event.timestamp > currentEvent.timestamp - 300,
+    );
+
+    if (
+      recentTransactions.some(
+        (event) => event.location !== currentEvent.location,
+      )
+    ) {
+      throw new FraudDetectionException(
+        "Erro De validacação " + currentEvent.accountId,
+      );
+    }
+
+    const amountId = currentEvent.amount;
+
+    if (amountId > currentEvent.accountBalance * 0.85) {
+      throw new FraudDetectionException(
+        "Erro De validacação " + currentEvent.accountId,
+      );
+    }
+  }
+}
+
+class AccountLedger {
+  constructor() {
+    this.accounts = new Map([
+      ["ACC-01", { balance: 50000, currency: "BRL", creditLimit: -5000 }],
+      ["ACC-02", { balance: 30000, currency: "USD", creditLimit: -3000 }],
+      ["ACC-03", { balance: 100000, currency: "EUR", creditLimit: -10000 }],
+      ["ACC-04", { balance: 2000, currency: "BRL", creditLimit: -500 }],
+      ["ACC-05", { balance: 5000, currency: "EUR", creditLimit: -1000 }],
+    ]);
+  }
+
+  getAccount(accountId) {
+    let getAcount = this.accounts.get(accountId);
+
+    if (getAcount === undefined) {
+      throw new DatabaseConnectionException(
+        `Conta não encontrada: ${accountId}`,
+      );
+    } else {
+      return structuredClone(getAcount);
+    }
+  }
+
+  executeDebit(accountId, amount, currenncy) {
+    const account = this.accounts.get(accountId);
+
+    if (account?.balance - amount < account?.creditLimit) {
+      throw new FinancialLiquidityException(
+        `Saldo insuficiente na conta: ${accountId}`,
+      );
+    }
+    return (account.balance = account.balance - amount);
+  }
+
+  executeCredit(accountId, amount, currenncy) {
+    const account = this.accounts.get(accountId);
+
+    if (account?.balance - amount < account?.creditLimit) {
+      throw new FinancialLiquidityException(
+        `Saldo insuficiente na conta: ${accountId}`,
+      );
+    }
+    return (account.balance = account.balance + amount);
   }
 }
