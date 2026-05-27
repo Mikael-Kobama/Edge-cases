@@ -244,3 +244,158 @@ class AccountLedger {
     return (account.balance = account.balance + amount);
   }
 }
+
+class TransactionalOrchestrator {
+  #auditLog = [];
+  #successCount = 0;
+  constructor() {
+    this.dataSanitizer = new DataSanitizer();
+    this.cryptogaphicValidator = new CryptographicValidator();
+    this.currencyConverter = new CurrencyConverter();
+    this.riskMatrizEngine = new RiskMatrixEngine();
+    this.accountLedger = new AccountLedger();
+    this.#auditLog = [];
+    this.#successCount = 0;
+  }
+
+  async processBatch(event, concurrencyLimit) {
+    const successLogs = [];
+    const failureLogs = [];
+
+    for (let i = 0; i < event.length; i += concurrencyLimit) {
+      const batch = event.slice(i, i + concurrencyLimit);
+      const replica = new Map(this.accountLedger.accounts);
+      console.log(
+        `[BATCH START] Iniciando lote ${i / concurrencyLimit + 1} com ${batch.length} transações`,
+      );
+
+      const batchPromises = batch.map(async (p) => this.#processEvent(p));
+
+      const results = await Promise.allSettled(batchPromises);
+
+      for (const result of results) {
+        if (result.status === "fulfilled") {
+          successLogs.push(result.value);
+          this.#successCount++;
+          console.log(`[SUCCESS] Transação processada`);
+        } else {
+          failureLogs.push(result);
+          console.log(`[FAILURE] Erro: ${result.reason.message}`);
+        }
+        if (this.#successCount % 5 === 0) {
+          console.log(
+            `[DISC PERSISTENCE CHUNK] Commit executado com sucesso para o bloco ${this.#successCount / 5}`,
+          );
+        }
+      }
+
+      const hasFailed = results.some((r) => r.status === "rejected");
+
+      if (hasFailed) {
+        this.rollbackBatch(i / concurrencyLimit + 1, replica);
+      }
+
+      console.log(
+        `[BATCH FINISH] Finalizando lote ${i / concurrencyLimit + 1} com ${batch.length} transações`,
+      );
+    }
+
+    return { successLogs, failureLogs };
+  }
+
+  async #processEvent(event) {
+    const cloned = structuredClone(event);
+
+    const cloneSanitized = this.dataSanitizer.cleanInputs(cloned);
+    const verified = this.cryptogaphicValidator.verifyIntegrity(cloneSanitized);
+
+    if (verified.currency !== "USD") {
+      let amount = verified.amount;
+      const convertVerified = this.currencyConverter.convert(
+        verified.amount,
+        verified.currency,
+        "USD",
+      );
+      verified.amount = this.currencyConverter.calculateSpread(convertVerified);
+    }
+
+    const riskAudit = this.riskMatrizEngine.evaluateRiskProfile(
+      verified,
+      this.#auditLog,
+    );
+
+    if (verified.type === "DEPOSIT") {
+      this.accountLedger.executeCredit(
+        verified.accountId,
+        verified.amount,
+        verified.currency,
+      );
+    }
+    if (verified.type === "WITHDRAW" || verified.type === "TRANSFER") {
+      this.accountLedger.executeDebit(
+        verified.accountId,
+        verified.amount,
+        verified.currency,
+      );
+    }
+
+    this.#auditLog.push(verified);
+    return verified;
+  }
+
+  rollbackBatch(batchId, snapshot) {
+    this.accountLedger.accounts = snapshot;
+
+    console.log(`[ROLLBACK] Lote ${batchId} revertido com sucesso`);
+  }
+}
+
+class ForensicAuditor {
+  generateAuditReport(successLogs, failureLogs) {
+    const sumFinal = successLogs.reduce((acc, att) => {
+      return acc + att.amount;
+    }, 0);
+
+    const failureLocations = failureLogs.filter(
+      (f) => f.reason.code === "FRAUD_ERR",
+    );
+
+    const dataHealth = successLogs.filter((p) => p._injectionDetected === true);
+    const dataHealthIndexTotal =
+      (dataHealth.length / (successLogs.length + failureLogs.length)) * 100;
+
+    const failureResume = failureLogs.map((q) => {
+      return {
+        name: q.reason.name,
+        code: q.reason.code,
+        message: q.reason.message,
+      };
+    });
+
+    return {
+      totalVolumeUSD: sumFinal,
+      fraudMapByCountry: failureLocations,
+      dataHealthIndex: dataHealthIndexTotal,
+      failureRootCause: failureResume,
+    };
+  }
+}
+
+async function main() {
+  const db = new DatabaseRepository();
+  const allEvents = await db.findAll();
+
+  const transactionalOrchestratorFunction = new TransactionalOrchestrator();
+
+  const { successLogs, failureLogs } =
+    await transactionalOrchestratorFunction.processBatch(allEvents, 5);
+
+  const auditor = new ForensicAuditor();
+
+  const finalReport = auditor.generateAuditReport(successLogs, failureLogs);
+  console.log(finalReport);
+
+  return finalReport;
+}
+
+main();
